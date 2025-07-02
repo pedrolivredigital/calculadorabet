@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-44VB8EVL9Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-44VB8EVL9Z');
+</script>
+  <meta charset="UTF-8">
+  <title>Calcule suas chance nas apostas esportivas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #007bff;
+      --primary-blue-dark: #0056b3;
+      --secondary-green: #28a745;
+      --secondary-red: #dc3545;
+      --warning-orange: #fd7e14;
+      --bg-light: #f4f7fa;
+      --bg-dark: #2c3e50;
+      --text-main: #34495e;
+      --text-light: #ecf0f1;
+      --card-bg: #ffffff;
+      --border-light: #e0e6ed;
+      --result-bg-light: #eaf1f7;
+      --box-shadow-light: rgba(0, 0, 0, 0.08);
+      --box-shadow-medium: rgba(0, 0, 0, 0.12);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 1.8rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px var(--box-shadow-light);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      letter-spacing: 0.5px;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2.5rem 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .sidebar {
+      width: 180px;
+      position: sticky;
+      top: 2.5rem;
+      align-self: flex-start;
+    }
+
+    main {
+      flex: 1;
+      max-width: 900px;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px var(--box-shadow-light);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    input[type="number"] {
+      width: calc(100% - 20px);
+      padding: 0.8rem 10px;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      font-size: 1.05rem;
+      background: var(--bg-light);
+      color: var(--text-main);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="number"]:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      outline: none;
+    }
+
+    button {
+      background: var(--primary-blue);
+      color: var(--text-light);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.1s ease;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: var(--primary-blue-dark);
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .calculate-btn {
+      width: 100%;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      padding: 1rem;
+    }
+
+    .add-bet-btn {
+      background: var(--secondary-green);
+      margin-top: 1rem;
+    }
+
+    .remove-bet-btn {
+      background: var(--secondary-red);
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    .bet-item {
+      background: var(--result-bg-light);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .bet-item label {
+      margin-bottom: 0;
+      min-width: 80px;
+    }
+
+    .bet-item input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    #resultado {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+      background: var(--result-bg-light);
+      border-radius: 8px;
+      line-height: 1.8;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    #resultado h3 {
+      color: var(--primary-blue);
+      font-size: 1.3rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.8rem;
+    }
+
+    #resultado ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+
+    #resultado li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #resultado p {
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-positive {
+      color: var(--secondary-green);
+      font-weight: 600;
+    }
+
+    .metric-negative {
+      color: var(--secondary-red);
+      font-weight: 600;
+    }
+
+    .metric-warning {
+      color: var(--warning-orange);
+      font-weight: 600;
+    }
+
+    .metric-neutral {
+      color: var(--primary-blue);
+      font-weight: 600;
+    }
+
+    .recommendation {
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border: 2px solid;
+    }
+
+    .recommend-bet {
+      background: rgba(40, 167, 69, 0.1);
+      border-color: var(--secondary-green);
+      color: var(--secondary-green);
+    }
+
+    .recommend-no-bet {
+      background: rgba(220, 53, 69, 0.1);
+      border-color: var(--secondary-red);
+      color: var(--secondary-red);
+    }
+
+    .recommend-arbitrage {
+      background: rgba(0, 123, 255, 0.1);
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    .ad-placeholder {
+      background: #ced4da;
+      color: #6c757d;
+      min-height: 90px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-align: center;
+      font-weight: 500;
+      border: 1px dashed #adb5bd;
+    }
+
+    .sidebar .ad-placeholder {
+      height: 250px;
+      width: 100%;
+    }
+
+    footer {
+      background: var(--bg-dark);
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      box-shadow: 0 -2px 8px var(--box-shadow-light);
+    }
+
+    footer .ad-placeholder {
+      width: 728px;
+      height: 90px;
+      margin: 1.5rem auto 0.5rem auto;
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      .sidebar {
+        display: none;
+      }
+      main {
+        padding: 2rem;
+        width: 100%;
+        max-width: 600px;
+      }
+      .bet-item {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .bet-item label {
+        min-width: auto;
+      }
+      .remove-bet-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+      footer .ad-placeholder {
+        width: calc(100% - 2rem) !important;
+        margin: 1rem auto 0.5rem auto;
+      }
+    }
+
+    @media (max-width: 576px) {
+      main {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Calcule suas chance nas apostas esportivas</h1>
+</header>
+
+<div class="container">
+  <div class="sidebar">
+    <div class="ad-placeholder">Anúncio Lateral</div>
+  </div>
+
+  <main>
+    <div class="ad-placeholder">Anúncio Superior</div>
+    
+    <h2>Configure suas Apostas</h2>
+      
+    <div class="form-group">
+      <label for="total">Valor total disponível para apostar (R$)</label>
+      <input type="number" id="total" step="0.01" min="1" placeholder="ex: 100.00">
+    </div>
+
+    <div id="betsContainer">
+      <div class="bet-item">
+        <label>Aposta 1:</label>
+        <input type="number" class="bet-odd" step="0.01" min="1" placeholder="Odd (ex: 2.50)">
+        <button class="remove-bet-btn" onclick="removeBet(this)" style="display: none;">Remover</button>
+      </div>
+    </div>
+
+    <button class="add-bet-btn" onclick="addBet()">+ Adicionar Aposta</button>
+    <button class="calculate-btn" onclick="calculateBets()">Calcular Distribuição</button>
+    
+    <div id="resultado"></div>
+
+    <div class="ad-placeholder">Anúncio Inferior</div>
+  </main>
+
+  <div class="sidebar">
+    <div class="ad-placeholder">Anúncio Lateral</div>
+  </div>
+</div>
+
+<footer>
+  <div class="ad-placeholder">Anúncio Rodapé</div>
+</footer>
+
+<script>
+let betCount = 1;
+
+function addBet() {
+  betCount++;
+  const container = document.getElementById('betsContainer');
+  
+  const betItem = document.createElement('div');
+  betItem.className = 'bet-item';
+  betItem.innerHTML = `
+    <label>Aposta ${betCount}:</label>
+    <input type="number" class="bet-odd" step="0.01" min="1" placeholder="Odd (ex: 2.50)">
+    <button class="remove-bet-btn" onclick="removeBet(this)">Remover</button>
+  `;
+  
+  container.appendChild(betItem);
+  updateRemoveButtons();
+}
+
+function removeBet(button) {
+  const betItem = button.parentElement;
+  betItem.remove();
+  
+  // Renumerar as apostas
+  const betItems = document.querySelectorAll('.bet-item');
+  betItems.forEach((item, index) => {
+    const label = item.querySelector('label');
+    label.textContent = `Aposta ${index + 1}:`;
+  });
+  
+  betCount = betItems.length;
+  updateRemoveButtons();
+}
+
+function updateRemoveButtons() {
+  const removeButtons = document.querySelectorAll('.remove-bet-btn');
+  removeButtons.forEach(button => {
+    button.style.display = betCount > 1 ? 'inline-block' : 'none';
+  });
+}
+
+function calculateBets() {
+  const total = parseFloat(document.getElementById('total').value);
+  const oddInputs = document.querySelectorAll('.bet-odd');
+  
+  if (!total || total <= 0) {
+    alert('Por favor, insira um valor total válido.');
+    return;
+  }
+  
+  const odds = [];
+  for (let input of oddInputs) {
+    const odd = parseFloat(input.value);
+    if (!odd || odd < 1) {
+      alert('Por favor, preencha todas as odds com valores válidos (≥ 1.00).');
+      return;
+    }
+    odds.push(odd);
+  }
+  
+  if (odds.length < 1) {
+    alert('Adicione pelo menos 1 aposta para calcular.');
+    return;
+  }
+  
+  // Estratégia de preservação de capital para apostas independentes
+  // Apostar mais nas odds menores (maior probabilidade de ganhar)
+  const weights = odds.map(odd => 1 / odd);
+  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+  const stakes = weights.map(weight => (weight / totalWeight) * total);
+  
+  // Calcular probabilidades implícitas de cada aposta
+  const probabilities = odds.map(odd => 1 / odd);
+  
+  // Gerar todos os cenários possíveis (2^n combinações)
+  const scenarios = generateScenarios(odds.length);
+  const scenarioResults = scenarios.map(scenario => 
+    calculateScenarioResult(scenario, stakes, odds, probabilities)
+  );
+  
+  // Ordenar cenários por probabilidade (mais prováveis primeiro)
+  scenarioResults.sort((a, b) => b.probability - a.probability);
+  
+  // Calcular estatísticas gerais
+  const expectedReturn = scenarioResults.reduce((sum, scenario) => 
+    sum + (scenario.probability * scenario.netResult), 0
+  );
+  
+  const worstCase = Math.min(...scenarioResults.map(s => s.netResult));
+  const bestCase = Math.max(...scenarioResults.map(s => s.netResult));
+  
+  // Probabilidades agregadas
+  const probLoss = scenarioResults.filter(s => s.netResult < 0).reduce((sum, s) => sum + s.probability, 0);
+  const probBreakeven = scenarioResults.filter(s => s.netResult === 0).reduce((sum, s) => sum + s.probability, 0);
+  const probProfit = scenarioResults.filter(s => s.netResult > 0).reduce((sum, s) => sum + s.probability, 0);
+  
+  displayResults(stakes, odds, scenarioResults.slice(0, 10), expectedReturn, worstCase, bestCase, probLoss, probBreakeven, probProfit, total);
+}
+
+function generateScenarios(numBets) {
+  const scenarios = [];
+  const totalScenarios = Math.pow(2, numBets);
+  
+  for (let i = 0; i < totalScenarios; i++) {
+    const scenario = [];
+    for (let j = 0; j < numBets; j++) {
+      scenario.push((i >> j) & 1); // 0 = perde, 1 = ganha
+    }
+    scenarios.push(scenario);
+  }
+  
+  return scenarios;
+}
+
+function calculateScenarioResult(scenario, stakes, odds, probabilities) {
+  let totalReturn = 0;
+  let scenarioProbability = 1;
+  let winsCount = 0;
+  
+  scenario.forEach((result, i) => {
+    if (result === 1) { // Ganhou
+      totalReturn += stakes[i] * odds[i];
+      scenarioProbability *= probabilities[i];
+      winsCount++;
+    } else { // Perdeu
+      scenarioProbability *= (1 - probabilities[i]);
+    }
+  });
+  
+  const totalInvested = stakes.reduce((sum, stake) => sum + stake, 0);
+  const netResult = totalReturn - totalInvested;
+  
+  return {
+    scenario,
+    winsCount,
+    totalReturn,
+    netResult,
+    probability: scenarioProbability,
+    description: generateScenarioDescription(scenario, winsCount, scenario.length)
+  };
+}
+
+function generateScenarioDescription(scenario, wins, total) {
+  if (wins === 0) return `Perde todas as ${total} apostas`;
+  if (wins === total) return `Ganha todas as ${total} apostas`;
+  return `Ganha ${wins} de ${total} apostas`;
+}
+
+function displayResults(stakes, odds, topScenarios, expectedReturn, worstCase, bestCase, probLoss, probBreakeven, probProfit, total) {
+  const recommendation = getRecommendation(expectedReturn, probProfit, probLoss);
+  
+  let html = `
+    <div class="recommendation ${recommendation.class}">
+      ${recommendation.message}
+    </div>
+    
+    <h3>Distribuição de Apostas (Preservação de Capital):</h3>
+    <ul>
+  `;
+  
+  stakes.forEach((stake, i) => {
+    const percentage = (stake / total * 100).toFixed(1);
+    html += `
+      <li>
+        <span>Aposta ${i + 1} (Odd ${odds[i].toFixed(2)}):</span> 
+        <span>R$ ${stake.toFixed(2)} (${percentage}%)</span>
+      </li>
+    `;
+  });
+  
+  html += `
+    </ul>
+
+    <h3>Análise de Probabilidades:</h3>
+    <div style="background: var(--card-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 1rem 0;">
+      <p><span class="metric-negative">Probabilidade de Prejuízo:</span> ${(probLoss * 100).toFixed(1)}%</p>
+      <p><span class="metric-warning">Probabilidade de Empate:</span> ${(probBreakeven * 100).toFixed(1)}%</p>
+      <p><span class="metric-positive">Probabilidade de Lucro:</span> ${(probProfit * 100).toFixed(1)}%</p>
+    </div>
+
+    <h3>Cenários Financeiros:</h3>
+    <p class="metric-positive">Melhor Cenário: R$ ${bestCase.toFixed(2)} (${((bestCase/total)*100).toFixed(1)}% ROI)</p>
+    <p class="metric-negative">Pior Cenário: R$ ${worstCase.toFixed(2)} (${((worstCase/total)*100).toFixed(1)}% ROI)</p>
+    <p class="${expectedReturn >= 0 ? 'metric-positive' : 'metric-negative'}">
+      Retorno Esperado: R$ ${expectedReturn.toFixed(2)} (${((expectedReturn/total)*100).toFixed(1)}% ROI)
+    </p>
+
+    <h3>Top 10 Cenários Mais Prováveis:</h3>
+    <div style="background: var(--result-bg-light); padding: 1rem; border-radius: 6px; max-height: 300px; overflow-y: auto;">
+  `;
+  
+  topScenarios.forEach((scenario, index) => {
+    const resultClass = scenario.netResult >= 0 ? 'metric-positive' : 'metric-negative';
+    const roi = ((scenario.netResult / total) * 100).toFixed(1);
+    
+    html += `
+      <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);">
+        <strong>${index + 1}º.</strong> ${scenario.description}<br>
+        <small>
+          Probabilidade: ${(scenario.probability * 100).toFixed(2)}% | 
+          <span class="${resultClass}">Resultado: R$ ${scenario.netResult.toFixed(2)} (${roi}% ROI)</span>
+        </small>
+      </div>
+    `;
+  });
+  
+  html += `
+    </div>
+
+    <h3>Estratégia Aplicada:</h3>
+    <div style="background: var(--card-bg); padding: 1rem; border-radius: 6px; border: 1px solid var(--border-light);">
+      <p>✅ <strong>Apostas Independentes:</strong> Cada resultado não afeta os outros</p>
+      <p>✅ <strong>Preservação de Capital:</strong> Maior investimento nas odds menores</p>
+      <p>✅ <strong>Análise Probabilística:</strong> ${Math.pow(2, odds.length)} cenários calculados</p>
+      <p>⚡ <strong>Gestão de Risco:</strong> Distribuição baseada em probabilidade implícita</p>
+    </div>
+  `;
+
+  document.getElementById('resultado').innerHTML = html;
+}
+
+function getRecommendation(expectedReturn, probProfit, probLoss) {
+  // Retorno esperado muito positivo
+  if (expectedReturn > 5 && probProfit > 0.6) {
+    return {
+      type: 'bet',
+      message: '🚀 EXCELENTE OPORTUNIDADE! Alto retorno esperado e boa chance de lucro',
+      class: 'recommend-bet'
+    };
+  }
+  
+  // Retorno esperado positivo com boa probabilidade
+  if (expectedReturn > 0 && probProfit > 0.5) {
+    return {
+      type: 'bet',
+      message: '✅ RECOMENDADO - Retorno esperado positivo com estratégia conservadora',
+      class: 'recommend-bet'
+    };
+  }
+  
+  // Retorno esperado ligeiramente positivo
+  if (expectedReturn > 0 && probProfit > 0.4) {
+    return {
+      type: 'bet',
+      message: '⚡ APOSTAR COM CAUTELA - Pequena vantagem matemática',
+      class: 'recommend-bet'
+    };
+  }
+  
+  // Alta probabilidade de prejuízo
+  if (probLoss > 0.7) {
+    return {
+      type: 'no-bet',
+      message: '❌ NÃO RECOMENDADO - Alta probabilidade de prejuízo',
+      class: 'recommend-no-bet'
+    };
+  }
+  
+  // Retorno esperado negativo
+  if (expectedReturn < 0) {
+    return {
+      type: 'no-bet',
+      message: '⚠️ NÃO RECOMENDADO - Retorno esperado negativo',
+      class: 'recommend-no-bet'
+    };
+  }
+  
+  // Caso neutro
+  return {
+    type: 'no-bet',
+    message: '🤔 NEUTRO - Analise cuidadosamente antes de apostar',
+    class: 'recommend-no-bet'
+  };
+}
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', function() {
+  updateRemoveButtons();
+});
+</script>
+
+</body>
+</html>
